@@ -2,5 +2,6 @@
 export const environment = {
     name: "staging",
     production: false,
-    backendHost: "https://jsonplaceholder.typicode.com"
+    backendHost: "https://api.weatherapi.com/v1/",
+    apikey: "ffca9533782042fbabe204151251902"
 };
