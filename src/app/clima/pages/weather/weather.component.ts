@@ -5,9 +5,9 @@ import { CardModule } from 'primeng/card';
   selector: 'app-home',
   standalone: true,
   imports: [CardModule],
-  templateUrl: './welcome-back.component.html',
-  styleUrl: './welcome-back.component.scss'
+  templateUrl: './weather.component.html',
+  styleUrl: './weather.component.scss'
 })
-export class WelcomeBackComponent {
+export class WheatherComponent {
 
 }

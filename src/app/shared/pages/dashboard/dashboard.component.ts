@@ -5,7 +5,7 @@ import { ApplicationHeaderComponent } from '../../components/application-header/
 import { ApplicationFooterComponent } from '../../components/application-footer/application-footer.component';
 import { DashboardLayoutComponent } from '../../components/dashboard-layout/dashboard-layout.component';
 import { DashboardBreadcrumbComponent } from '../../components/dashboard-breadcrumb/dashboard-breadcrumb.component';
-import { HideMnuService } from '../../shared/services/hide-mnu.service';
+import { HideMnuService } from '../../../shared/services/hide-mnu.service';
 import { Subject, fromEvent, debounceTime, Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { DashboardOverlayMenuComponent } from '../../components/dashboard-overlay-menu/dashboard-overlay-menu.component';

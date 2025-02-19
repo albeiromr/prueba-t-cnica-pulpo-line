@@ -5,7 +5,7 @@ import { BadgeModule } from 'primeng/badge';
 import { RippleModule } from 'primeng/ripple';
 import { AvatarModule } from 'primeng/avatar';
 import { CommonModule } from '@angular/common';
-import { HideMnuService } from '../../shared/services/hide-mnu.service';
+import { HideMnuService } from '../../../shared/services/hide-mnu.service';
 import { Subscription } from 'rxjs';
 import { RouterModule } from '@angular/router';
 
@@ -42,9 +42,9 @@ export class DashboardLateralMenuComponent implements OnInit, OnDestroy {
         label: 'Inicio',
         items: [
           {
-            label: 'Bienvenido',
-            icon: 'pi pi-home',
-            route: '/dashboard/home'
+            label: 'Clima',
+            icon: 'pi pi-sun',
+            route: '/dashboard/clima'
           },
           {
             label: 'Busqueda',

@@ -8,7 +8,7 @@ import { MenuModule } from 'primeng/menu';
 import { SidebarModule } from 'primeng/sidebar';
 import { DashboardLateralMenuComponent } from '../dashboard-lateral-menu/dashboard-lateral-menu.component';
 import { Subscription } from 'rxjs';
-import { HideMnuService } from '../../shared/services/hide-mnu.service';
+import { HideMnuService } from '../../../shared/services/hide-mnu.service';
 
 @Component({
   selector: 'app-dashboard-overlay-menu',

@@ -2,5 +2,5 @@
  * cuales el usuario puede navegar 
  */
 export class RouterConstans {
-    public static readonly home: string = "/dashboard/welcome-back";
+    public static readonly weather: string = "/dashboard/clima";
 }

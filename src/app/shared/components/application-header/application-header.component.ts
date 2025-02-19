@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { BadgeModule } from 'primeng/badge';
-import { HideMnuService } from '../../shared/services/hide-mnu.service';
+import { HideMnuService } from '../../../shared/services/hide-mnu.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
