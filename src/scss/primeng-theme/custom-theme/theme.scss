@@ -1,0 +1,16 @@
+// al cambiar el valor de estas variables no olvidar cambiar también las que están en eol archivo ./theme-exported-variables.scss
+$lateralMenuColor: #254336;
+$primaryColor: #6B8A7A !default;
+$primaryLightColor: #b4dfc9 !default;
+$primaryDarkColor: #517261 !default;
+$primaryDarkerColor: #3c5f4d !default;
+$primaryTextColor: #ffffff !default;
+
+$highlightBg: #f0fdfa !default;
+$highlightTextColor: $primaryDarkerColor !default;
+$highlightFocusBg: rgba($primaryColor, .24) !default;
+
+@import './_variables';
+@import './_fonts';
+@import '../primeng-theme-base/_components';
+@import './_extensions';

@@ -1,0 +1,27 @@
+// Aquí se pueden importar todas las hojas de estilo globales de SASS
+
+
+// normalize hace que no se apliquen los estilos por defecto de cada navegador
+@import "./normalize";
+
+// correcciones globales primeng
+@import "./global-primeng-fixes";
+
+// variables de sass que son usadas a lo largo de toda la applicación
+@import "./variables";
+
+// variables del tema de primeng
+@import "./primeng-theme/custom-theme/theme-exported-variables";
+
+// estilos de contenedores
+@import "./containers";
+
+// fuentes de la aplicación en formato fontface
+@import "./font-faces";
+
+// estilos aplicables a textos y títulos
+@import "./text";
+
+
+
+

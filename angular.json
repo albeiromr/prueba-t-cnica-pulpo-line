@@ -33,10 +33,15 @@
             ],
             "styles": [
               "src/scss/root.scss",
-              "src/scss/primeng-dont-modify-anything/custom-primeng-theme/theme.scss",
-              "src/scss/primeng-dont-modify-anything/primeng.css",
+              "src/scss/primeng-theme/custom-theme/theme.scss",
+              "src/scss/primeng-theme/primeng.css",
               "primeicons/primeicons.css"
             ],
+            "stylePreprocessorOptions": {
+              "sass": {
+                "silenceDeprecations": ["color-functions", "global-builtin", "import", "mixed-decls"]
+              }
+            },
             "scripts": []
           },
           "configurations": {

@@ -1,0 +1,11 @@
+//este archivo es para hacer correciones de forma global a componentes de prime ng que se comportan de maneras no deseadas,
+// por ejemplo los botones primarios tienen una trancición que no muestra su color de fondo al navegar a la pantalla donde ellos se encuentran,
+// por lo que es necesario corregirlos globalmente en esta hoja
+
+// recordar que cualquier modificación global de primeng debe hacerse aquí y no en los archivos de la carpeta
+// scss/primeng-dont-modify-anything
+
+// botones de primeng
+::ng-deep .p-button{
+    transition: unset;
+}

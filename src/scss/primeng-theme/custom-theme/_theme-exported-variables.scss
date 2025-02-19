@@ -1,0 +1,8 @@
+// al cambiar el valor de estas variables no olvidar cambiar también las que están en eol archivo ./theme.scss
+// el archivo ./theme-exported-variables.scsses el único que puede ser importado en el archivo root.scss del proyecto de angular
+$lateralMenuColor: #254336;
+$primaryColor: #6B8A7A !default;
+$primaryLightColor: #b4dfc9 !default;
+$primaryDarkColor: #517261 !default;
+$primaryDarkerColor: #3c5f4d !default;
+$primaryTextColor: #ffffff !default;
