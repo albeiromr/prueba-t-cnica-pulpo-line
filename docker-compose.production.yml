@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  angular-frontend:
+    build:
+      context: .
+      dockerfile: ./docker/dockerfiles/Dockerfile.production
+    image: angular-frontend-production-env
+    container_name: angular-frontend-production-env
+    restart: always
+    ports:
+      - "80"
+    networks:
+      - pulpo_line_network
+
+networks:
+  traefik_network:
+    external: true

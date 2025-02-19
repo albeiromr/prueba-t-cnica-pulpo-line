@@ -1,0 +1,60 @@
+# fase 1: creación del build de la aplicación de Angular.
+
+# descarga la imágen de nodejs y la etiqueta como builder
+FROM node:20.16.0-alpine as builder
+
+
+# crea la carpeta /app dentro del sistema de archivos del contenedor
+# a partir de ahora todos los comandos se ejcutarán desde la carpeta /app
+# dentro del contenedor.
+WORKDIR /app
+
+
+# copia todos los archivos de la carpeta raíz del proyecto Angular hacia la 
+# carpeta /app del sistema de archivos del contenedor
+COPY . .
+
+
+# Installa las librerías de npm dentro de la carpeta /app del sistema de 
+# archivos del contenedor
+RUN npm install
+
+
+# Ejecuta el script build-(environment) definido en package.json, que 
+# compila la aplicación Angular en archivos estáticos listos para producción.
+# El resultado se guarda en el directorio dist/nombre-de-aplicación/browser.
+RUN npm run build-production
+
+
+
+# fase 2: servir la aplicación de Angular con NGINX
+
+# Utiliza la imagen de Nginx versión 1.20 como base para esta etapa. La etapa
+# se etiqueta como ngx para referirse a ella más adelante.
+FROM nginx:1.20 as ngx
+
+
+# Copia el resultado del build de Angular desde el directorio /app que se creo en la fase 1 (builder)
+# al directorio de Nginx donde se almacenan los archivos estáticos (/usr/share/nginx/html)
+COPY --from=builder /app/dist/angular-frontend/browser /usr/share/nginx/html
+
+# Copia el archivo de configuración de Nginx (nginx.conf) al directorio de configuración de Nginx
+# dentro del sistema de archivos del contenedor (/etc/nginx/conf.d/) y lo renombra como default.conf
+COPY /docker/nginx-server/nginx.conf  /etc/nginx/conf.d/default.conf
+
+# Crea el directorio para el caché de Nginx, si no existe. Este directorio se utiliza para almacenar
+# archivos temporales relacionados con el caché del cliente.
+RUN mkdir -p /var/cache/nginx/client_temp
+
+
+# Cambia la propiedad del directorio de caché de Nginx al usuario y grupo nginx. Esto asegura que Nginx
+# tenga los permisos adecuados para acceder y escribir en este directorio.
+RUN chown -R nginx:nginx /var/cache/nginx
+
+# Informa a Docker que el contenedor escuchará en el puerto 80. Esto es necesario para que el contenedor
+# pueda recibir tráfico HTTP.
+EXPOSE 80
+
+# Define el comando que se ejecutará cuando se inicie el contenedor. En este caso, inicia Nginx en primer 
+# plano (daemon off;), lo que es necesario para que el contenedor continúe ejecutándose y Nginx esté activo.
+CMD ["nginx", "-g", "daemon off;"]
