@@ -10,6 +10,7 @@ import { WeatherModels } from '../models/weather-models';
 export class WeatherService {
 
   private readonly searchAndAutocompleteEndpoint: string = "search.json?";
+  private readonly currentCityinformationEndpoint: string = "current.json?";
   private readonly apikey: string = environment.apikey; 
 
   constructor(
@@ -28,5 +29,20 @@ export class WeatherService {
       map(res => {
         return res;
     }))
+  }
+
+  /**
+   * Trae la información meteorológica de la ciudad seleccionada
+   */
+  public getSelectedCityWeatherInformation(city: string): Observable<WeatherModels.CityInformation> {
+
+    const endpoint : string = `${this.currentCityinformationEndpoint}q=${city}&lang=en&key=${this.apikey}`;
+
+    return this.httpClientService.sendGetRequest<WeatherModels.CityInformation>(endpoint)
+    .pipe(
+      map(res => {
+        return res;
+    }))
+
   }
 }

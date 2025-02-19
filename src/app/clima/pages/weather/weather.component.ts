@@ -14,6 +14,7 @@ import { WeatherModels } from '../../models/weather-models';
 export class WheatherComponent implements OnInit {
 
   public cityCoincidenses: WeatherModels.CityCoincidence[];
+  public cityInformation: WeatherModels.CityInformation | null = null;
 
   constructor(
     private weatherService: WeatherService,
@@ -22,13 +23,20 @@ export class WheatherComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getCityCoincidenses();
+    this.getCityCoincidences();
+    this.getCityWeatherInformation()
   }
 
 
-  getCityCoincidenses(){
+  getCityCoincidences(): void {
     this.weatherService.searchAndAutoCompleteCity("med").subscribe(data => {
       console.log(data);
     });
+  }
+
+  getCityWeatherInformation(): void {
+    this.weatherService.getSelectedCityWeatherInformation("manizales").subscribe(data => {
+      console.log(data)
+    })
   }
 }
