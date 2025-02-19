@@ -1,0 +1,32 @@
+<header class="application-header">
+
+    @if(widowWidth < screenBrakpoint){
+        <!-- boton para mostrar y esconder menú -->
+        <p-button class="hamburguer-button left-button" icon="pi pi-align-justify" [rounded]="true" [outlined]="true" size="small" (onClick)="handleHamburguerButtonClick()"/>
+    }
+
+    <!-- Logotipo de la aplicación -->
+    <span class="application-logo-to-the-right"
+        [ngClass]="{
+            'application-logo-to-the-right': widowWidth < screenBrakpoint,
+            'application-logo-to-the-left': widowWidth > screenBrakpoint
+        }"
+    >
+        <img class="company-icon" src="/logo-pulpoline-1.webp" alt="company icon">
+    </span>
+
+    @if(widowWidth > screenBrakpoint){
+        <!-- boton para mostrar y esconder menú -->
+        <p-button class="hamburguer-button right-button" icon="pi pi-align-justify" [rounded]="true" [outlined]="true" size="small" (onClick)="handleHamburguerButtonClick()"/>
+    }
+
+    <span class="header-actions">
+        <button class="card flex justify-content-center">
+            <i class="pi pi-star notification-bell" pBadge value="5"></i>
+        </button>
+        <div class="header-actions__separator"></div>
+        <button class="card flex justify-content-center">
+            <i class="pi pi-sign-out sign-out"></i>
+        </button>
+    </span>
+</header>

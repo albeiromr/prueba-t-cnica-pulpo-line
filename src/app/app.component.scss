@@ -1,0 +1,5 @@
+@import "../scss/root.scss";
+
+.application-root-container {
+    @extend %full-size-page-container;
+}

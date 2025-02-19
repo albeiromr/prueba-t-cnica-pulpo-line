@@ -1,0 +1,36 @@
+@import "../../../scss/root.scss";
+
+$gap-spacing: 10px;
+
+.dashboard-layout {
+    width: 100%;
+    height: calc(100vh - $dashboard-header-height);
+    padding: $gap-spacing $gap-spacing 0 $gap-spacing;
+    background: transparent;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-spacing;
+    justify-content: space-between;
+
+    /* scroll bar width */
+    &::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: $lateralMenuColor;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: $primaryColor;
+        border-radius: 5px;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: $primaryColor;
+    }
+}

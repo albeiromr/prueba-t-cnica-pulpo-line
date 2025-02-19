@@ -1,0 +1,24 @@
+<div 
+    class="dashboard-root-container" 
+    [ngClass]="{
+        'dashboard-root-container--desktop': hideLeftPadding,
+    }"
+>
+    <app-application-header />
+
+    @if(screenWidth < screenWidthBrakpoint){
+        <app-dashboard-overlay-menu />
+    }
+    @if(screenWidth > screenWidthBrakpoint){
+        <app-dashboard-lateral-menu [isInsideLaterlOverlay]="false"/>
+    }
+    
+    <app-dashboard-layout>
+        <div>
+            <app-dashboard-breadcrumb />
+            <router-outlet />
+        </div>
+        <app-application-footer />
+    </app-dashboard-layout>
+    
+</div>

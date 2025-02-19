@@ -1,0 +1,6 @@
+@import "../../../scss/root.scss";
+
+.not-found-page {
+    @extend %full-size-page-container;
+    background: rgb(80, 121, 82);
+}

@@ -1,0 +1,324 @@
+@import "../../../scss/root.scss";
+
+$full-width: $dashboard-lateral-menu-width;
+$hole-vh: calc(100vh - $dashboard-header-height);
+$menu-background: $lateralMenuColor;
+$white500: white;
+$white300: rgb(212, 212, 212);
+$white100: rgb(179, 179, 179);
+
+
+.dashboard-lateral-menu--desktop ::ng-deep {
+    width: $full-width;
+    animation: slideIn .3s ease forwards;
+    animation-play-state: paused;
+
+    .p-menu {
+        width: $full-width;
+        border-radius: 0;
+        height: $hole-vh;
+        border: none;
+        position: fixed;
+        left: 0;
+        z-index: 10;
+        background: $menu-background;
+        padding-bottom: 0;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+
+
+        .p-menu-start {
+            padding: 10px 0;
+
+            span {
+                display: flex;
+                gap: 16px;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+            }
+        }
+
+        .logotype-title {
+            color: $white500;
+        }
+
+        .p-menu-list {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            padding-bottom: 60px;
+            overflow-y: auto;
+
+            /* scroll bar width */
+            &::-webkit-scrollbar {
+                width: 7px;
+            }
+
+            /* Track */
+            &::-webkit-scrollbar-track {
+                background: $menu-background;
+            }
+
+            /* Handle */
+            &::-webkit-scrollbar-thumb {
+                background: $primaryColor;
+                border-radius: 5px;
+            }
+
+            /* Handle on hover */
+            &::-webkit-scrollbar-thumb:hover {
+                background: $primaryColor;
+            }
+        }
+
+        .p-menuitem-separator {
+            display: none;
+        }
+
+        .p-submenu-header {
+            background: $menu-background;
+            color: $white500;
+        }
+
+        .top-separator {
+            width: 100%;
+            height: 1px;
+            margin: 8px auto;
+            background: darken($color: $primaryColor, $amount: 20);
+        }
+
+        .p-menuitem-content {
+            .p-ripple {
+                color: $white300;
+                width: 240px;
+                float: right;
+                border-radius: 8px 0 0 8px;
+                display: flex;
+                gap: 16px;
+            }
+        }
+
+        .p-menuitem-content:is( :hover, :active) {
+            border: none;
+            outline: none;
+            background: $primaryColor;
+        }
+
+        .p-menu-end {
+            width: 100%;
+            padding: 9px 20px 9px 20px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            justify-content: flex-start;
+            color: $white500;
+            background: $menu-background;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-top: 1px solid darken($color: $primaryColor, $amount: 20);
+
+
+            .p-avatar-circle {
+                background: transparent;
+            }
+
+            .user-information {
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+
+                &__name {
+                    font-weight: 500;
+                }
+
+                &__role {
+                    color: $white100;
+                    font-size: 12px;
+                }
+            }
+        }
+
+    }
+
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.dashboard-lateral-menu--hidden {
+    animation: slideOut .3s ease forwards;
+    animation-play-state: paused;
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+.dashboard-lateral-menu--mobile ::ng-deep {
+    width: $full-width;
+
+    .p-menu {
+        width: $full-width;
+        border-radius: 0;
+        height: $hole-vh;
+        border: none;
+        position: fixed;
+        left: 0;
+        z-index: 10;
+        background: $menu-background;
+        padding-bottom: 0;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: column;
+
+
+        .p-menu-start {
+            padding: 10px 0;
+
+            span {
+                display: flex;
+                gap: 16px;
+                align-items: center;
+                justify-content: center;
+                font-size: 20px;
+            }
+        }
+
+        .logotype-title {
+            color: $white500;
+        }
+
+        .p-menu-list {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            padding-bottom: 60px;
+            overflow-y: auto;
+
+            /* scroll bar width */
+            &::-webkit-scrollbar {
+                width: 7px;
+            }
+
+            /* Track */
+            &::-webkit-scrollbar-track {
+                background: $menu-background;
+            }
+
+            /* Handle */
+            &::-webkit-scrollbar-thumb {
+                background: $primaryColor;
+                border-radius: 5px;
+            }
+
+            /* Handle on hover */
+            &::-webkit-scrollbar-thumb:hover {
+                background: $primaryColor;
+            }
+        }
+
+        .p-menuitem-separator {
+            display: none;
+        }
+
+        .p-submenu-header {
+            background: $menu-background;
+            color: $white500;
+        }
+
+        .top-separator {
+            width: 100%;
+            height: 1px;
+            margin: 8px auto;
+            background: darken($color: $primaryColor, $amount: 20);
+        }
+
+        .p-menuitem-content {
+            .p-ripple {
+                color: $white300;
+                width: 240px;
+                float: right;
+                border-radius: 8px 0 0 8px;
+                display: flex;
+                gap: 16px;
+            }
+        }
+
+        .p-menuitem-content:is( :hover, :active) {
+            border: none;
+            outline: none;
+            background: $primaryColor;
+        }
+
+        .p-menu-end {
+            width: 100%;
+            padding: 9px 20px 9px 20px;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            justify-content: flex-start;
+            color: $white500;
+            background: $menu-background;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            border-top: 1px solid darken($color: $primaryColor, $amount: 20);
+
+
+            .p-avatar-circle {
+                background: transparent;
+            }
+
+            .user-information {
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+
+                &__name {
+                    font-weight: 500;
+                }
+
+                &__role {
+                    color: $white100;
+                    font-size: 12px;
+                }
+            }
+        }
+
+    }
+
+}
+
+.active-link ::ng-deep {
+    background-color: $primaryColor;
+    color: $white500;
+    border-radius: 8px 0 0 8px;
+    width: 240px;
+    float: right;
+
+    p-badge {
+
+        span {
+            background: $white500;
+            color: $primaryColor;
+        }
+    }
+}

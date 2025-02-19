@@ -1,0 +1,95 @@
+@import "../../../scss/root.scss";
+
+.application-header {
+    width: 100%;
+    height: $dashboard-header-height;
+    padding: 0 20px;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    -webkit-box-shadow: 0px 2px 7px -3px $box-shadow-color;
+    -moz-box-shadow: 0px 2px 7px -3px $box-shadow-color;
+    box-shadow: 0px 2px 7px -3px $box-shadow-color;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+
+    .application-logo-to-the-left {
+
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: $lateralMenuColor;
+        font-weight: 500;
+        margin-right: 62px;
+
+        .company-icon {
+            max-width: 140px;
+        }
+    }
+
+    .application-logo-to-the-right {
+
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        color: $lateralMenuColor;
+        font-weight: 500;
+        margin-left: 15px;
+
+        .company-icon {
+            max-width: 140px;
+        }
+    }
+
+    p-button ::ng-deep {
+        .p-button {
+            width: 31px;
+            height: 36px;            
+        }
+    }
+
+    .header-actions {
+        width: 100px;
+        height: 100%;
+        padding-top: 6px;
+        position: absolute;
+        right: 20px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+
+        button {
+            border: none;
+            outline: none;
+            background: white;
+            cursor: pointer;
+        }
+
+        .notification-bell {
+            font-size: 25px;
+            color: $lateralMenuColor;
+        }
+
+        &__separator ::ng-deep{
+            width: 2px;
+            height: 50%;
+            background: #dfdfdf;
+        }
+
+        .sign-out {
+            font-size: 20px;
+            color: $lateralMenuColor;
+        }
+    }
+
+}

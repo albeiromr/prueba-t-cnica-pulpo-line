@@ -1,0 +1,33 @@
+@import "../../../scss/root.scss";
+
+.application-footer {
+    width: 100%;
+    padding: 0 20px;
+    height: $dashboard-footer-height;
+    background: white;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+
+    -webkit-box-shadow: 0px -2px 7px -3px $box-shadow-color;
+    -moz-box-shadow: 0px -2px 7px -3px $box-shadow-color;
+    box-shadow: 0px -2px 7px -3px $box-shadow-color;
+
+    .application-logo {
+        width: auto;
+        display: flex;
+        align-items: center;
+
+        img{
+            max-width: 40px;
+        }
+    }
+
+    &__copyright {
+        color: $main-dark-text-color;
+        font-size: 14px;
+    }
+}
+

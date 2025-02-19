@@ -1,0 +1,17 @@
+@import "../../../scss/root.scss";
+
+.dashboard-root-container {
+    @extend %full-size-page-container;
+    padding-top: $dashboard-header-height;
+    padding-left: $dashboard-lateral-menu-width;
+    background: lighten($color: $primaryColor, $amount: 45); 
+    transition: all .3s ease;
+}
+
+.dashboard-root-container--desktop {
+    @extend %full-size-page-container;
+    padding-top: $dashboard-header-height;
+    padding-left: 0;
+    background: lighten($color: $primaryColor, $amount: 45);
+    transition: all .3s ease;
+}

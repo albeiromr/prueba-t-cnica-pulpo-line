@@ -1,0 +1,38 @@
+<div 
+    [ngClass]="{
+        'dashboard-lateral-menu--desktop': !isInsideLateralOverlay,
+        'dashboard-lateral-menu--hidden': hideMenu && !isInsideLateralOverlay,
+        'dashboard-lateral-menu--mobile': isInsideLateralOverlay
+    }"
+>
+    <p-menu [model]="items" [style]="{'background': 'var(--lateral-menu-color)'}" >
+        <!-- Personalización de los items del menú -->
+        <ng-template pTemplate="submenuheader" let-item>
+            <span class="text-primary font-bold">{{ item.label }}</span>
+        </ng-template>
+        <ng-template pTemplate="item" let-item>
+            <a pRipple [routerLink]="item.route" routerLinkActive="active-link" [routerLinkActiveOptions]='{exact: true}' class="flex align-items-center p-menuitem-link" (click)="handleLinkClick()">
+                <span [class]="item.icon" style="font-size: 1.1rem;"></span>
+                <span class="ml-2">{{ item.label }}</span>
+                <p-badge *ngIf="item.badge" class="ml-auto" [value]="item.badge" />
+            </a>
+        </ng-template>
+
+
+        <!-- Footer del menu -->
+        <ng-template pTemplate="end">
+            <p-avatar 
+                icon="pi pi-user" 
+                styleClass="mr-2"  
+                shape="circle" 
+                [style]="{'border': '1px solid var(--primary-color)', 'color': 'var(--primary-color)'}" 
+            />
+            <span class="user-information">
+                <span class="font-bold user-information__name">Andrew Quirós</span>
+                <span class="text-sm user-information__role">Administrador</span>
+            </span>
+        </ng-template>
+
+
+    </p-menu>
+</div>
