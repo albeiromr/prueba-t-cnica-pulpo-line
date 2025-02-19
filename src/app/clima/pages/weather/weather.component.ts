@@ -3,6 +3,7 @@ import { CardModule } from 'primeng/card';
 import { WeatherService } from '../../services/weather.service';
 import { ToastService } from '../../../shared/services/toast.service';
 import { WeatherModels } from '../../models/weather-models';
+import { ToastSeverityEnum } from '../../../shared/enums/toast-severity.enum';
 
 @Component({
   selector: 'app-home',
@@ -23,20 +24,24 @@ export class WheatherComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getCityCoincidences();
-    this.getCityWeatherInformation()
+    this.getCityCoincidences("med");
+    this.getCityWeatherInformation("manizales");
   }
 
 
-  getCityCoincidences(): void {
-    this.weatherService.searchAndAutoCompleteCity("med").subscribe(data => {
-      console.log(data);
+  getCityCoincidences(word: string): void {
+    this.weatherService.searchAndAutoCompleteCity(word).subscribe(data => {
+      this.cityCoincidenses = data;
     });
   }
 
-  getCityWeatherInformation(): void {
-    this.weatherService.getSelectedCityWeatherInformation("manizales").subscribe(data => {
-      console.log(data)
+  getCityWeatherInformation(city: string): void {
+    this.weatherService.getSelectedCityWeatherInformation(city).subscribe(data => {
+      this.cityInformation = data;
+      this.toastService.showToast(
+        ToastSeverityEnum.success,
+        `Clima de ${city} consultado exitosamente`
+      );
     })
   }
 }
