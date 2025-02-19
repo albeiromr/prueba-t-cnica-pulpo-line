@@ -10,7 +10,7 @@ import { WeatherModels } from '../models/weather-models';
 export class WeatherService {
 
   private readonly searchAndAutocompleteEndpoint: string = "search.json?";
-  private readonly apikey: string = `key=${environment.apikey}`; 
+  private readonly apikey: string = environment.apikey; 
 
   constructor(
     private httpClientService: HttpClientService,
@@ -21,12 +21,12 @@ export class WeatherService {
    */
   public searchAndAutoCompleteCity(word: string): Observable<WeatherModels.CityCoincidence[]> {
 
-    const endpoint : string = `${environment.backendHost}${this.searchAndAutocompleteEndpoint}q=${word}&key=${this.apikey}`
+    const endpoint : string = `${this.searchAndAutocompleteEndpoint}q=${word}&key=${this.apikey}`;
 
     return this.httpClientService.sendGetRequest<WeatherModels.CityCoincidence[]>(endpoint)
-    .pipe(map(res => {
-      const transformedData = [res[0], res[1]];
-      return transformedData;
+    .pipe(
+      map(res => {
+        return res;
     }))
   }
 }

@@ -9,4 +9,8 @@ export namespace WeatherModels {
         lon: number;
         url: string
     }
+
+    export class mappedCoincidence {
+        region: string;
+    }
 }
