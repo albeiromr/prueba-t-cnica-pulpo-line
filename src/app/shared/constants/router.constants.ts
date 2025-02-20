@@ -3,4 +3,5 @@
  */
 export class RouterConstans {
     public static readonly weather: string = "/dashboard/clima";
+    public static readonly history: string = "/dashboard/historial";
 }

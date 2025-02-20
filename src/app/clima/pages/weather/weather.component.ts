@@ -13,6 +13,7 @@ import { DividerModule } from 'primeng/divider';
 import { WeatherCardComponent } from '../../components/weather-card/weather-card.component';
 import { LocalStorageService } from '../../../shared/services/local-storage.service';
 import { LocalStorageConstants } from '../../../shared/constants/local-storage.constants';
+import { HistoryModels } from '../../../shared/models/history-models';
 
 @Component({
   selector: 'app-home',
@@ -43,9 +44,9 @@ export class WheatherComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    const list = this.localStorageService.getItem<string[]>(LocalStorageConstants.history, true);
+    const list = this.localStorageService.getItem<HistoryModels.Item[]>(LocalStorageConstants.history, true);
 
-    if(!list) this.localStorageService.setItem<string[]>(LocalStorageConstants.history, new Array());
+    if(!list) this.localStorageService.setItem<HistoryModels.Item[]>(LocalStorageConstants.history, new Array());
   }
 
   getCityCoincidences(event: WeatherInterfaces.AutoCompleteCompleteEvent): void {
@@ -83,8 +84,14 @@ export class WheatherComponent implements OnInit {
   }
 
   saveSearchToHistory(): void {
-    const list = this.localStorageService.getItem<string[]>(LocalStorageConstants.history, true);
-    list!.push(this.selectedCity!);
+    const list = this.localStorageService.getItem<HistoryModels.Item[]>(LocalStorageConstants.history, true);
+
+    const newItem: HistoryModels.Item = {
+      date: new Date(),
+      city: this.selectedCity!
+    }
+
+    list!.push(newItem);
     this.localStorageService.setItem(LocalStorageConstants.history, list);
   }
 }

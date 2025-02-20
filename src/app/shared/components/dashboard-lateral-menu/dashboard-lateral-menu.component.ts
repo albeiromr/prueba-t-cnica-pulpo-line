@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { HideMnuService } from '../../../shared/services/hide-mnu.service';
 import { Subscription } from 'rxjs';
 import { RouterModule } from '@angular/router';
+import { RouterConstans } from '../../constants/router.constants';
 
 @Component({
   selector: 'app-dashboard-lateral-menu',
@@ -39,32 +40,24 @@ export class DashboardLateralMenuComponent implements OnInit, OnDestroy {
         separator: true
       },
       {
-        label: 'Inicio',
+        label: 'Menú Principal',
         items: [
           {
             label: 'Clima',
             icon: 'pi pi-sun',
-            route: '/dashboard/clima'
+            route: RouterConstans.weather
           },
           {
-            label: 'Busqueda',
-            icon: 'pi pi-search',
-            route: '/busqueda'
-          }
-        ]
-      },
-      {
-        label: 'Archivo',
-        items: [
+            label: 'Hitorial',
+            icon: 'pi pi-history',
+            route: RouterConstans.history
+          },
           {
             label: 'Favoritos',
             icon: 'pi pi-star',
             route: '/dashboard/favoritos'
           },
         ]
-      },
-      {
-        separator: false
       }
     ];
   }
