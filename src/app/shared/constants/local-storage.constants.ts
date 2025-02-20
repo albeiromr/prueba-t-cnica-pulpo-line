@@ -4,4 +4,5 @@
 export class LocalStorageConstants {
     public static readonly accessToken = "access-token";
     public static readonly history = "history";
+    public static readonly favorites = "favorites";
 }

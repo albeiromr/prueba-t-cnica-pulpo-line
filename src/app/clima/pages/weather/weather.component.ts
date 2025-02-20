@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { WeatherService } from '../../services/weather.service';
 import { ToastService } from '../../../shared/services/toast.service';
-import { WeatherModels } from '../../models/weather-models';
+import { WeatherModels } from '../../../shared/models/weather-models';
 import { ToastSeverityEnum } from '../../../shared/enums/toast-severity.enum';
 import { WeatherInterfaces } from '../../Interfaces/weather-interfaces';
 import { AutoCompleteModule } from 'primeng/autocomplete';
@@ -47,9 +47,13 @@ export class WheatherComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // creando la lista de favoritos si no existe
-    const list = this.localStorageService.getItem<HistoryModels.Item[]>(LocalStorageConstants.history, true);
-    if(!list) this.localStorageService.setItem<HistoryModels.Item[]>(LocalStorageConstants.history, new Array());
+    // creando la lista del historial de busqueda si no existe
+    const historylist = this.localStorageService.getItem<HistoryModels.Item[]>(LocalStorageConstants.history, true);
+    if(!historylist) this.localStorageService.setItem<HistoryModels.Item[]>(LocalStorageConstants.history, new Array());
+
+    // creando la lista de los favoritos de busqueda si no existe
+    const favoritelist = this.localStorageService.getItem<WeatherModels.CityInformation[]>(LocalStorageConstants.favorites, true);
+    if(!favoritelist) this.localStorageService.setItem<WeatherModels.CityInformation[]>(LocalStorageConstants.favorites, new Array());
 
     // buscando la información de una ciudad si dué solicitado
     // por el módulo de historial o favoritos;
@@ -106,6 +110,12 @@ export class WheatherComponent implements OnInit {
 
     list!.push(newItem);
     this.localStorageService.setItem(LocalStorageConstants.history, list);
+  }
+
+  saveCityToFavorites(){
+    const list = this.localStorageService.getItem<WeatherModels.CityInformation[]>(LocalStorageConstants.favorites, true);
+    list!.push(this.cityInformation!);
+    this.localStorageService.setItem(LocalStorageConstants.favorites, list);
   }
 }
 
