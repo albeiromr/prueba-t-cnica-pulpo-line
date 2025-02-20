@@ -1,0 +1,13 @@
+.dashboard-favorites-page  {
+    width: 100%;
+    height: auto;
+    min-height: 630px;
+    margin:  0 auto;    
+
+    .action-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 16px;
+    }
+}

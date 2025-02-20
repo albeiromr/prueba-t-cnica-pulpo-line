@@ -116,6 +116,10 @@ export class WheatherComponent implements OnInit {
     const list = this.localStorageService.getItem<WeatherModels.CityInformation[]>(LocalStorageConstants.favorites, true);
     list!.push(this.cityInformation!);
     this.localStorageService.setItem(LocalStorageConstants.favorites, list);
+    this.toastService.showToast(
+      ToastSeverityEnum.success,
+      `La ciudad ${this.selectedCity!} se guardó exitosamente en tus favoritos`
+    );
   }
 }
 
