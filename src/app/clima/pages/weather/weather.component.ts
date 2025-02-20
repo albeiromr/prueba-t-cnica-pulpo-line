@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
+import { WeatherCardComponent } from '../../components/weather-card/weather-card.component';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,8 @@ import { DividerModule } from 'primeng/divider';
     FormsModule, 
     CommonModule, 
     ButtonModule,
-    DividerModule
+    DividerModule,
+    WeatherCardComponent
   ],
   templateUrl: './weather.component.html',
   styleUrl: './weather.component.scss'
