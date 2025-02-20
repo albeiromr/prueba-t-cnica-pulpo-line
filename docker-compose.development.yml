@@ -9,10 +9,4 @@ services:
     container_name: angular-frontend-development-env
     restart: always
     ports:
-      - "80"
-    networks:
-    - pulpo_line_network
-
-networks:
-  traefik_network:
-    external: true
+      - "8800:80"

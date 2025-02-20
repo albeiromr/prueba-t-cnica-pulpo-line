@@ -17,7 +17,7 @@ COPY . .
 
 # Installa las librerías de npm dentro de la carpeta /app del sistema de 
 # archivos del contenedor
-RUN npm install
+RUN npm install --force
 
 
 # Ejecuta el script build-(environment) definido en package.json, que 
