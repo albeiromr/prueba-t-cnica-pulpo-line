@@ -35,16 +35,16 @@ export class LocalStorageService {
    * 
    * al llamar el método se debe pasar el tipo de dato genérico getItem<T>()
    */
-  public getItem<T>(key: string, parseJson: boolean = false): T | string | null {
+  public getItem<T>(key: string, parseJson: boolean = false): T {
     try {
       const value = window.localStorage.getItem(key);
       if (value === null) {
-        return null; // El key no existe
+        return null as T; // El key no existe
       }
-      return parseJson ? JSON.parse(value) as T : value;
+      return parseJson ? JSON.parse(value) as T : value as T;
     } catch (error) {
       console.error(ErrorMessagesConstants.localStorageItemReadingError, error);
-      return null;
+      return null as T;
     }
   }
 

@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { DividerModule } from 'primeng/divider';
 import { WeatherCardComponent } from '../../components/weather-card/weather-card.component';
+import { LocalStorageService } from '../../../shared/services/local-storage.service';
+import { LocalStorageConstants } from '../../../shared/constants/local-storage.constants';
 
 @Component({
   selector: 'app-home',
@@ -27,7 +29,7 @@ import { WeatherCardComponent } from '../../components/weather-card/weather-card
   templateUrl: './weather.component.html',
   styleUrl: './weather.component.scss'
 })
-export class WheatherComponent {
+export class WheatherComponent implements OnInit {
 
   public cityCoincidenses: string[] = [];
   public selectedCity: string | null = null;
@@ -36,8 +38,15 @@ export class WheatherComponent {
 
   constructor(
     private weatherService: WeatherService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private localStorageService: LocalStorageService
   ){}
+
+  ngOnInit(): void {
+    const list = this.localStorageService.getItem<string[]>(LocalStorageConstants.history, true);
+
+    if(!list) this.localStorageService.setItem<string[]>(LocalStorageConstants.history, new Array());
+  }
 
   getCityCoincidences(event: WeatherInterfaces.AutoCompleteCompleteEvent): void {
     this.weatherService.searchAndAutoCompleteCity(event.query).subscribe(data => {
@@ -65,11 +74,18 @@ export class WheatherComponent {
     this.weatherService.getSelectedCityWeatherInformation(this.selectedCity!).subscribe(data => {
       this.cityInformation = data;
       this.horaLocal = new Date(data.location.localtime).toLocaleTimeString();
+      this.saveSearchToHistory();
       this.toastService.showToast(
         ToastSeverityEnum.success,
         `El clima de ${this.selectedCity!} fue consultado exitosamente`
       );
     })
+  }
+
+  saveSearchToHistory(): void {
+    const list = this.localStorageService.getItem<string[]>(LocalStorageConstants.history, true);
+    list!.push(this.selectedCity!);
+    this.localStorageService.setItem(LocalStorageConstants.history, list);
   }
 }
 
