@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { UserService } from './user.service';
 import { ErrorMessagesConstants } from '../constants/error-messages.constants';
+import { ToastService } from './toast.service';
+import { ToastSeverityEnum } from '../enums/toast-severity.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ import { ErrorMessagesConstants } from '../constants/error-messages.constants';
 export class ErrorHandlingService {
 
   constructor(
-    private userService: UserService
+    private toastService: ToastService
   ) { }
 
   /**
@@ -23,32 +24,34 @@ export class ErrorHandlingService {
 
     switch (error.status) {
       case 401:
-        // el token ha expirado, se cierra la sesión del usuario
-        this.userService.closeUserSession();
+        // se cierra la seción del usuario
         break;
       case 400:
-        console.error(ErrorMessagesConstants.badRequest);
+        this.toastService.showToast(ToastSeverityEnum.error, ErrorMessagesConstants.badRequest)
         break;
       case 409:
-        console.error(ErrorMessagesConstants.requestConflict);
+        this.toastService.showToast(ToastSeverityEnum.error, ErrorMessagesConstants.requestConflict)
         break;
       case 403:
-        console.error(ErrorMessagesConstants.forbidden);
+        this.toastService.showToast(ToastSeverityEnum.error, ErrorMessagesConstants.forbidden)
         break;
       case 404:
-        console.error(ErrorMessagesConstants.notFound);
+        this.toastService.showToast(ToastSeverityEnum.error, ErrorMessagesConstants.notFound)
         break;
       case 405:
-        console.error(ErrorMessagesConstants.methodNotAllowed);
+        this.toastService.showToast(ToastSeverityEnum.error, ErrorMessagesConstants.methodNotAllowed)
         break;
       case 429:
-        console.error(ErrorMessagesConstants.tooManyRequests);
+        this.toastService.showToast(ToastSeverityEnum.error, ErrorMessagesConstants.tooManyRequests)
         break;
       case 500:
-        console.error(ErrorMessagesConstants.internalError);
+        this.toastService.showToast(ToastSeverityEnum.error, ErrorMessagesConstants.internalError)
+        break;
+      case 502:
+        this.toastService.showToast(ToastSeverityEnum.error, ErrorMessagesConstants.internalError)
         break;
       default:
-        console.error("se presentó un error. código:" + error.status + ". error: " + error.message);
+        this.toastService.showToast(ToastSeverityEnum.error, "se presentó un error. código:" + error.status + ". error: " + error.message)
         break;
     }
 
