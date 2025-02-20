@@ -6,7 +6,7 @@ $primaryDarkColor: darken($primaryColor, 25%) !default;
 $primaryDarkerColor: darken($primaryColor, 35%) !default;
 $primaryTextColor: #ffffff !default;
 
-$highlightBg: #f0fdfa !default;
+$highlightBg: $primaryLightColor !default;
 $highlightTextColor: $primaryDarkerColor !default;
 $highlightFocusBg: rgba($primaryColor, .24) !default;
 
