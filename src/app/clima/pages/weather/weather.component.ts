@@ -4,17 +4,31 @@ import { WeatherService } from '../../services/weather.service';
 import { ToastService } from '../../../shared/services/toast.service';
 import { WeatherModels } from '../../models/weather-models';
 import { ToastSeverityEnum } from '../../../shared/enums/toast-severity.enum';
+import { WeatherInterfaces } from '../../Interfaces/weather-interfaces';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ButtonModule } from 'primeng/button';
+import { DividerModule } from 'primeng/divider';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CardModule],
+  imports: [
+    AutoCompleteModule, 
+    CardModule,  
+    FormsModule, 
+    CommonModule, 
+    ButtonModule,
+    DividerModule
+  ],
   templateUrl: './weather.component.html',
   styleUrl: './weather.component.scss'
 })
-export class WheatherComponent implements OnInit {
+export class WheatherComponent {
 
-  public cityCoincidenses: WeatherModels.CityCoincidence[];
+  public cityCoincidenses: string[] = [];
+  public selectedCity: string | null = null;
   public cityInformation: WeatherModels.CityInformation | null = null;
 
   constructor(
@@ -22,16 +36,16 @@ export class WheatherComponent implements OnInit {
     private toastService: ToastService
   ){}
 
+  getCityCoincidences(event: WeatherInterfaces.AutoCompleteCompleteEvent): void {
+    this.weatherService.searchAndAutoCompleteCity(event.query).subscribe(data => {
 
-  ngOnInit(): void {
-    this.getCityCoincidences("med");
-    this.getCityWeatherInformation("manizales");
-  }
+      let citiesCoincidenses: string[] = [];
 
+      for(let i = 0; i < data.length; i++){
+        citiesCoincidenses = [...citiesCoincidenses, data[i].name];
+      }
 
-  getCityCoincidences(word: string): void {
-    this.weatherService.searchAndAutoCompleteCity(word).subscribe(data => {
-      this.cityCoincidenses = data;
+      this.cityCoincidenses = citiesCoincidenses;
     });
   }
 
@@ -45,3 +59,5 @@ export class WheatherComponent implements OnInit {
     })
   }
 }
+
+

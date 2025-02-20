@@ -1,9 +1,29 @@
 <p-card 
-    header="Bienvenido de nuevo Andrew"
-    subheader="Este es el reporte de tu ciudad"
->
+    header="Consulta del Clima" 
+    subheader="Escribe el nombre o parte del nombre de la ciudad de la cual deseas conocer el clima actual, podrás hacer uso del autocompletado automático.">
+
+
+
     <main class="dashboard-home-page">
+
+
+        <div class="autocomplete__container">
+            <label for="#autocompletado">Nombre de la ciudad</label>
+            <div class="autocomplete__row">
+
+                <p-autoComplete 
+                    id="#autocompletado"
+                    placeholder="Escribe aquí"
+                    [(ngModel)]="selectedCity" 
+                    [suggestions]="cityCoincidenses"
+                    (completeMethod)="getCityCoincidences($event)" 
+                />
+    
+                <p-button label="Buscar" />
+    
+            </div>
+        </div>
+
+        <p-divider />
     </main>
 </p-card>
-
-

@@ -5,4 +5,43 @@
     height: auto;
     min-height: 630px;
     margin:  0 auto;
+
+    .autocomplete__container{
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: left;
+        gap: 5px;
+
+        
+    }
+
+    .autocomplete__row {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: left;
+        gap: 16px;
+
+        @media screen and (max-width: 430px) {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+
+            ::ng-deep .p-button{
+                width: 320px;
+            }
+
+            ::ng-deep .p-inputtext{
+                width: 320px;
+            }
+            
+        }
+
+        
+    }
 }
