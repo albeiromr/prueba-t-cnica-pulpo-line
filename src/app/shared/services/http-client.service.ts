@@ -37,7 +37,7 @@ export class HttpClientService {
     let result: string = "";
     const token = this.localStorageService.getItem<string>(LocalStorageConstants.accessToken, false);
     if (token && token.trim().length > 0) result = token;
-    else console.error(ErrorMessagesConstants.accessTokenReadingError);
+    else return ""; // solución temporal
     return result;
   }
 
