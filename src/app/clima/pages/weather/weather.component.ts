@@ -69,7 +69,6 @@ export class WheatherComponent {
         ToastSeverityEnum.success,
         `El clima de ${this.selectedCity!} fue consultado exitosamente`
       );
-      console.log(this.cityInformation);
     })
   }
 }

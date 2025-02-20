@@ -7,7 +7,7 @@
 
         <div class="autocomplete__container">
             <label for="#autocompletado">Nombre de la ciudad</label>
-            <div class="autocomplete__row">
+            <div class="autocomplete-row">
 
                 <p-autoComplete 
                     id="#autocompletado"
@@ -23,12 +23,12 @@
         </div>
 
         <p-divider />
-
-
-
+    
         @if(cityInformation){
 
-            <div class="action_bar">
+            <h1>{{cityInformation!.location.name}}</h1>
+
+            <div class="action-bar">
 
                 @if(cityInformation.current.condition.icon){
                     <div class="weather-image">
@@ -110,6 +110,13 @@
                 }
                 
             </div>
+
+        }@else {
+
+            <div class="weather-placeholder">
+                <img src="/placeholder.svg" alt="weather plaveholder">
+            </div>
+
         }
 
 

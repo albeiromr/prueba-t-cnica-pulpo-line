@@ -17,7 +17,7 @@
         
     }
 
-    .autocomplete__row {
+    .autocomplete-row {
         width: 100%;
         height: auto;
         display: flex;
@@ -45,6 +45,14 @@
         
     }
 
+    h1 {
+        font-size: 25px;
+
+        @media screen and (max-width: 430px) {
+            text-align: center;
+        }
+    }
+
     .information-grid {
         width: 100%;
         height: auto;
@@ -65,7 +73,7 @@
         }
     }
 
-    .action_bar {
+    .action-bar {
         width: 100%;
         height: auto;
         min-height: 66px;
@@ -95,8 +103,14 @@
         gap: 12px;
         align-items: center;
         justify-content: left;
-
     }
 
+    .weather-placeholder {
+        width: 100%;
+        height: 570px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     
 }
