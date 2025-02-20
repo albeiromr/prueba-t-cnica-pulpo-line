@@ -42,6 +42,22 @@
             
         }
 
+        @media screen and (max-width: 380px) {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+
+            ::ng-deep .p-button{
+                width: 280px;
+            }
+
+            ::ng-deep .p-inputtext{
+                width: 280px;
+            }
+            
+        }
+
         
     }
 
@@ -91,6 +107,12 @@
 
             ::ng-deep .p-button{
                 width: 320px;
+            }
+        }
+
+        @media screen and (max-width: 380px) {
+            ::ng-deep .p-button{
+                width: 280px;
             }
         }
     }
