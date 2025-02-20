@@ -21,40 +21,10 @@ export class ErrorHandlingService {
    * @param error error http obtenido al hacer una solicitud
    */
   public handleHttpError(error: HttpErrorResponse): void {
-
-    switch (error.status) {
-      case 401:
-        // se cierra la seción del usuario
-        break;
-      case 400:
-        this.toastService.showToast(ToastSeverityEnum.error, ErrorMessagesConstants.badRequest)
-        break;
-      case 409:
-        this.toastService.showToast(ToastSeverityEnum.error, ErrorMessagesConstants.requestConflict)
-        break;
-      case 403:
-        this.toastService.showToast(ToastSeverityEnum.error, ErrorMessagesConstants.forbidden)
-        break;
-      case 404:
-        this.toastService.showToast(ToastSeverityEnum.error, ErrorMessagesConstants.notFound)
-        break;
-      case 405:
-        this.toastService.showToast(ToastSeverityEnum.error, ErrorMessagesConstants.methodNotAllowed)
-        break;
-      case 429:
-        this.toastService.showToast(ToastSeverityEnum.error, ErrorMessagesConstants.tooManyRequests)
-        break;
-      case 500:
-        this.toastService.showToast(ToastSeverityEnum.error, ErrorMessagesConstants.internalError)
-        break;
-      case 502:
-        this.toastService.showToast(ToastSeverityEnum.error, ErrorMessagesConstants.internalError)
-        break;
-      default:
-        this.toastService.showToast(ToastSeverityEnum.error, "se presentó un error. código:" + error.status + ". error: " + error.message)
-        break;
-    }
-
+    this.toastService.showToast(
+      ToastSeverityEnum.error, 
+      "Lo sentimos, se ha presentado un error, por favor intente nuevamente en unos minutos"
+    )
   }
 
 }

@@ -36,7 +36,7 @@ export class WeatherService {
    */
   public getSelectedCityWeatherInformation(city: string): Observable<WeatherModels.CityInformation> {
 
-    const endpoint : string = `${this.currentCityinformationEndpoint}q=${city}&lang=en&key=${this.apikey}`;
+    const endpoint : string = `${this.currentCityinformationEndpoint}q=${city}&lang=es&key=${this.apikey}`;
 
     return this.httpClientService.sendGetRequest<WeatherModels.CityInformation>(endpoint)
     .pipe(

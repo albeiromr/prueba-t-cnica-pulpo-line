@@ -49,13 +49,23 @@ export class WheatherComponent {
     });
   }
 
-  getCityWeatherInformation(city: string): void {
-    this.weatherService.getSelectedCityWeatherInformation(city).subscribe(data => {
+  getCityWeatherInformation(): void {
+
+    if(this.selectedCity === null || this.selectedCity === "") {
+      this.toastService.showToast(
+        ToastSeverityEnum.warn,
+        `Debe escribir el nombre de una ciudad para hacer una busqueda`
+      );
+      return;
+    }
+
+    this.weatherService.getSelectedCityWeatherInformation(this.selectedCity!).subscribe(data => {
       this.cityInformation = data;
       this.toastService.showToast(
         ToastSeverityEnum.success,
-        `Clima de ${city} consultado exitosamente`
+        `Clima de ${this.selectedCity!} consultado exitosamente`
       );
+      console.log(this.cityInformation);
     })
   }
 }

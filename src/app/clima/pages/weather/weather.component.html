@@ -2,8 +2,6 @@
     header="Consulta del Clima" 
     subheader="Escribe el nombre o parte del nombre de la ciudad de la cual deseas conocer el clima actual, podrás hacer uso del autocompletado automático.">
 
-
-
     <main class="dashboard-home-page">
 
 
@@ -19,11 +17,56 @@
                     (completeMethod)="getCityCoincidences($event)" 
                 />
     
-                <p-button label="Buscar" />
+                <p-button label="Buscar" (onClick)="getCityWeatherInformation()" />
     
             </div>
         </div>
 
         <p-divider />
+
+        @if(cityInformation){
+
+            <div class="action_bar">
+
+                @if(cityInformation?.current?.condition?.icon){
+                    <div class="weather-image">
+                        <img [src]="cityInformation!.current.condition.icon" alt="weather status icon">
+                        <p>{{cityInformation!.current.condition.text}}</p>
+                    </div>
+                }
+
+                <p-button label="Guardar en favoritos" icon="pi pi-star-fill" iconPos="right" />
+    
+            </div>
+        }
+
+        <div class="information-grid">
+
+            <article class="meazurement">
+
+                <div class="meazurement_title">
+                    <p>lorem ipsum</p>
+                </div>
+
+                <div class="meazurement_value">
+                    <p>30 G</p>
+                </div>
+
+            </article>
+
+            <article class="meazurement"></article>
+
+            <article class="meazurement"></article>
+
+            <article class="meazurement"></article>
+
+            <article class="meazurement"></article>
+
+            <article class="meazurement"></article>
+
+            <article class="meazurement"></article>
+
+        </div>
+
     </main>
 </p-card>
