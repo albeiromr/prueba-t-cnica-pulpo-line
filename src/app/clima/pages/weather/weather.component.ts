@@ -32,6 +32,7 @@ export class WheatherComponent {
   public cityCoincidenses: string[] = [];
   public selectedCity: string | null = null;
   public cityInformation: WeatherModels.CityInformation | null = null;
+  public horaLocal: string = "";
 
   constructor(
     private weatherService: WeatherService,
@@ -63,9 +64,10 @@ export class WheatherComponent {
 
     this.weatherService.getSelectedCityWeatherInformation(this.selectedCity!).subscribe(data => {
       this.cityInformation = data;
+      this.horaLocal = new Date(data.location.localtime).toLocaleTimeString();
       this.toastService.showToast(
         ToastSeverityEnum.success,
-        `Clima de ${this.selectedCity!} consultado exitosamente`
+        `El clima de ${this.selectedCity!} fue consultado exitosamente`
       );
       console.log(this.cityInformation);
     })
