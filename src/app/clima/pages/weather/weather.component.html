@@ -30,7 +30,7 @@
 
             <div class="action_bar">
 
-                @if(cityInformation?.current?.condition?.icon){
+                @if(cityInformation.current.condition.icon){
                     <div class="weather-image">
                         <img [src]="cityInformation!.current.condition.icon" alt="weather status icon">
                         <p>{{cityInformation!.current.condition.text}}</p>
@@ -43,28 +43,28 @@
 
             <div class="information-grid">
 
-                @if(cityInformation?.current?.temp_c){
+                @if(cityInformation.current.temp_c){
                     <app-weather-card
                     title="Temperatura en °C"
                     [value]="cityInformation!.current.temp_c+ ' °C'"
                     ></app-weather-card>
                 }
     
-                @if(cityInformation?.current?.temp_f){
+                @if(cityInformation.current.temp_f){
                     <app-weather-card
                     title="Temperatura en °f"
                     [value]="cityInformation!.current.temp_f + ' °f'"
                     ></app-weather-card>
                 }
     
-                @if(cityInformation?.current?.pressure_in){
+                @if(cityInformation.current.pressure_in){
                     <app-weather-card
                     title="Hora local"
                     [value]="horaLocal"
                     ></app-weather-card>
                 }
     
-                @if(cityInformation?.current?.pressure_in){
+                @if(cityInformation.current.pressure_in){
                     <app-weather-card
                     title="Precipitaciones"
                     [value]="cityInformation!.current.pressure_in + ' Inc'"
@@ -72,7 +72,7 @@
                 }
     
     
-                @if(cityInformation?.current?.humidity){
+                @if(cityInformation.current.humidity){
                     <app-weather-card
                     title="Humedad"
                     [value]="cityInformation!.current.humidity + ' %'"
@@ -80,21 +80,21 @@
                 }
     
     
-                @if(cityInformation?.current?.heatindex_c){
+                @if(cityInformation.current.heatindex_c){
                     <app-weather-card
                     title="Índice de calor"
                     [value]="cityInformation!.current.heatindex_c + ' °C'"
                     ></app-weather-card>
                 }
     
-                @if(cityInformation?.current?.gust_kph){
+                @if(cityInformation.current.gust_kph){
                     <app-weather-card
                     title="Ráfaga de viento"
                     [value]="cityInformation!.current.gust_kph + ' kph'"
                     ></app-weather-card>
                 }
     
-                @if(cityInformation?.current?.feelslike_c){
+                @if(cityInformation.current.feelslike_c){
                     <app-weather-card
                     title="Sensación térmica"
                     [value]="cityInformation!.current.feelslike_c + ' °C'"
@@ -102,7 +102,7 @@
                 }
                 
     
-                @if(cityInformation?.current?.dewpoint_c){
+                @if(cityInformation.current.dewpoint_c){
                     <app-weather-card
                     title="Punto de Rocío"
                     [value]="cityInformation!.current.dewpoint_c + ' °C'"

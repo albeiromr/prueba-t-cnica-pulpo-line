@@ -59,7 +59,6 @@ export class DashboardLateralMenuComponent implements OnInit, OnDestroy {
           {
             label: 'Favoritos',
             icon: 'pi pi-star',
-            badge: '5',
             route: '/dashboard/favoritos'
           },
         ]

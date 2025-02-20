@@ -14,7 +14,6 @@
             <a pRipple [routerLink]="item.route" routerLinkActive="active-link" [routerLinkActiveOptions]='{exact: true}' class="flex align-items-center p-menuitem-link" (click)="handleLinkClick()">
                 <span [class]="item.icon" style="font-size: 1.1rem;"></span>
                 <span class="ml-2">{{ item.label }}</span>
-                <p-badge *ngIf="item.badge" class="ml-auto" [value]="item.badge" />
             </a>
         </ng-template>
 
