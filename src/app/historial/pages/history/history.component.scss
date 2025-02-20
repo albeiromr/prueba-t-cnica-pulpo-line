@@ -5,4 +5,18 @@
     height: auto;
     min-height: 630px;
     margin:  0 auto;    
+
+    .history-placeholder {
+        width: 100%;
+        height: 570px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+        justify-content: center;
+
+        img{
+            margin-right: 50px;
+        }
+    }
 }

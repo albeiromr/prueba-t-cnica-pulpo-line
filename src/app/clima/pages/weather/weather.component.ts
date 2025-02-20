@@ -14,6 +14,7 @@ import { WeatherCardComponent } from '../../components/weather-card/weather-card
 import { LocalStorageService } from '../../../shared/services/local-storage.service';
 import { LocalStorageConstants } from '../../../shared/constants/local-storage.constants';
 import { HistoryModels } from '../../../shared/models/history-models';
+import { SelectedCityService } from '../../../shared/services/selected-city.service';
 
 @Component({
   selector: 'app-home',
@@ -40,13 +41,25 @@ export class WheatherComponent implements OnInit {
   constructor(
     private weatherService: WeatherService,
     private toastService: ToastService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private selectedCityService: SelectedCityService
   ){}
 
   ngOnInit(): void {
-    const list = this.localStorageService.getItem<HistoryModels.Item[]>(LocalStorageConstants.history, true);
 
+    // creando la lista de favoritos si no existe
+    const list = this.localStorageService.getItem<HistoryModels.Item[]>(LocalStorageConstants.history, true);
     if(!list) this.localStorageService.setItem<HistoryModels.Item[]>(LocalStorageConstants.history, new Array());
+
+    // buscando la información de una ciudad si dué solicitado
+    // por el módulo de historial o favoritos;
+    const sentCity = this.selectedCityService.getCity;
+    if(sentCity){
+      this.selectedCity = sentCity;
+      this.getCityWeatherInformation();
+      this.selectedCityService.setCity = null;
+    }
+    
   }
 
   getCityCoincidences(event: WeatherInterfaces.AutoCompleteCompleteEvent): void {

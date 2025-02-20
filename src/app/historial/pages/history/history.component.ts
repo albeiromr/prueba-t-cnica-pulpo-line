@@ -7,6 +7,9 @@ import { LocalStorageService } from '../../../shared/services/local-storage.serv
 import { LocalStorageConstants } from '../../../shared/constants/local-storage.constants';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
+import { Router } from '@angular/router';
+import { RouterConstans } from '../../../shared/constants/router.constants';
+import { SelectedCityService } from '../../../shared/services/selected-city.service';
 
 @Component({
   selector: 'app-history',
@@ -19,12 +22,30 @@ export class HistoryComponent implements OnInit{
 
   historyItems: HistoryModels.Item[] = [];
 
-  constructor(private localStorageService: LocalStorageService){}
+  constructor(
+    private localStorageService: LocalStorageService,
+    private selectedCityService: SelectedCityService,
+    private router: Router
+  ){}
 
   ngOnInit(): void {
     const history = this.localStorageService.getItem<HistoryModels.Item[]>(LocalStorageConstants.history, true);
-    this.historyItems = history;
-    console.log(this.historyItems);
+
+    if(!history) {
+      this.historyItems = [];
+      return;
+    }
+
+    this.historyItems = history.reverse();
+  }
+
+  goToSearchPage(): void {
+    this.router.navigate([RouterConstans.weather]);
+  }
+
+  searchCityAgain(city: string): void {
+    this.selectedCityService.setCity = city;
+    this.router.navigate([RouterConstans.weather]);
   }
 
 }
