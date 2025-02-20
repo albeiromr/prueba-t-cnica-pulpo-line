@@ -29,13 +29,21 @@
                         <td>{{item.location.country}}</td>
 
                         <td class="action-container">
-                            <p-button icon="pi pi-trash" iconPos="right" severity="secondary" pTooltip="Eliminar de mis favoritos" tooltipPosition="left"/>
-                            <p-button icon="pi pi-search" iconPos="right" pTooltip="Volver a consultar el clima" tooltipPosition="left"/>
+                            <p-button icon="pi pi-trash" iconPos="right" severity="secondary" pTooltip="Eliminar de mis favoritos" tooltipPosition="left" (onClick)="deleteCityFromFavorites(item)"/>
+                            <p-button icon="pi pi-search" iconPos="right" pTooltip="Volver a consultar el clima" tooltipPosition="left" (onClick)="searchCityAgain(item.location.name)"/>
                         </td>
                         
                     </tr>
                 </ng-template>
             </p-table>
+
+        } @else {
+
+            <div class="favorites-placeholder">
+                <img src="/favorites-placeholder.svg" alt="favotites plaveholder">
+                <p> Aún no tienes favoritos guardados</p>
+                <p-button label="Buscar una ciudad" icon="pi pi-search" iconPos="right" (onClick)="goToSearchPage()"/>
+            </div>
 
         }
         
